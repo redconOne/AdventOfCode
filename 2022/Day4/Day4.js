@@ -18,13 +18,6 @@ const solve1 = (str) => {
       (secondElf[0] >= firstElf[0] && secondElf[1] <= firstElf[1])
     )
       counter++;
-    console.log(
-      firstElf,
-      secondElf,
-      firstElf[0] >= secondElf[0] && firstElf[1] <= secondElf[1],
-      secondElf[0] >= firstElf[0] && secondElf[1] <= firstElf[1],
-      counter
-    );
   }
 
   return counter;
@@ -41,13 +34,6 @@ const solve2 = (str) => {
       (secondElf[0] >= firstElf[0] && secondElf[0] <= firstElf[1])
     )
       counter++;
-    console.log(
-      firstElf,
-      secondElf,
-      counter,
-      firstElf[0] >= secondElf[0] && firstElf[0] <= secondElf[1],
-      secondElf[0] >= firstElf[0] && secondElf[0] <= firstElf[1]
-    );
   }
   return counter;
 };
