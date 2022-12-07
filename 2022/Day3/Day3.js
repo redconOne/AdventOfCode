@@ -70,8 +70,35 @@ wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn
 ttgJtRGJQctTZtZT
 CrZsJsPPZsGzwwsLwLmpwMDw`;
 
-// console.log('Solve 1 :', solve1(test), ' ');
-// console.log(solve1(input));
+console.log('Solve 1 :', solve1(test), ' ');
+console.log(solve1(input));
 
 console.log('Solve 2 :', solve2(test), ' ');
 console.log(solve2(input));
+
+console.log(ruckSack(test));
+console.log(ruckSack(input));
+
+function ruckSack(inp) {
+  const priority = ' abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  // 1-26 and 27-52
+  let items = inp
+    .split('\n')
+    .map(
+      (value) =>
+        `${[value.slice(0, value.length / 2)]},${[
+          value.slice(value.length / 2),
+        ]}`
+    )
+    .map((value) => value.split(','));
+
+  let shared = [];
+  items.map((value) => {
+    let ruck1 = value[0].split('');
+    let ruck2 = value[1].split('');
+    shared.push(ruck1.find((letter) => ruck2.includes(letter)));
+  });
+
+  console.log(shared);
+  return shared.reduce((total, value) => total + priority.indexOf(value), 0);
+}
