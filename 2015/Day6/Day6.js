@@ -81,22 +81,6 @@ const solve2 = (str) => {
     }
   }
 
-  const temp = lights[0];
-
-  let result = 0;
-  let min = 0;
-  let max = 0;
-  for (const row of lights)
-    for (const light of row) {
-      min = Math.min(min, light);
-      max = Math.max(max, light);
-      result += light;
-      if (light < 0) console.log(light);
-    }
-
-  console.log(result);
-  console.log(min);
-  console.log(max);
   return total;
 };
 
@@ -104,6 +88,4 @@ const test2 = `turn on 0,0 through 0,0
 toggle 0,0 through 999,999`;
 
 // console.log(solve2(test2));
-console.log(solve2(data));
-// 13824059
-//
+// console.log(solve2(data));
