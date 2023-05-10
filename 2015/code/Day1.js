@@ -1,7 +1,5 @@
-const fs = require('fs');
-const data = fs
-  .readFileSync('./2015/input/Day1.txt', { encoding: 'utf8' })
-  .trim();
+import { readFileSync } from 'fs';
+const data = readFileSync('./2015/input/Day1.txt', { encoding: 'utf8' }).trim();
 
 const calcFloor = (input) => {
   let total = 0;
