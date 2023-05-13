@@ -1,6 +1,5 @@
-const fs = require('fs');
-const data = fs
-  .readFileSync('./2015/input/Day5.txt', { encoding: 'utf-8' })
+import { readFileSync } from 'fs';
+const data = readFileSync('./2015/input/Day5.txt', { encoding: 'utf-8' })
   .replace(/\r/g, '')
   .trim();
 
