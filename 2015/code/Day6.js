@@ -1,6 +1,5 @@
-const fs = require('fs');
-const data = fs
-  .readFileSync('./2015/input/Day6.txt', { encoding: 'utf8' })
+import { readFileSync } from 'fs';
+const data = readFileSync('./2015/input/Day6.txt', { encoding: 'utf8' })
   .replace(/\r/g, '')
   .trim();
 
@@ -9,7 +8,6 @@ const toggle = (input, grid, modifier) => {
   const startY = input[1];
   const endX = input[2];
   const endY = input[3];
-  let adjust;
 
   for (let y = startY; y <= endY; y++)
     for (let x = startX; x <= endX; x++)
