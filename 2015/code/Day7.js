@@ -1,6 +1,5 @@
-const fs = require('fs');
-const data = fs
-  .readFileSync('./2015/input/Day7.txt', { encoding: 'utf8' })
+import { readFileSync } from 'fs';
+const data = readFileSync('./2015/input/Day7.txt', { encoding: 'utf8' })
   .replace(/\r/g, '')
   .trim();
 
@@ -46,7 +45,6 @@ const rightShift = (input, map) => {
 const solve1 = (input) => {
   const map = new Map();
 
-  let counter = 100;
   while (map.get('a') === undefined)
     for (const line of input.split('\n')) {
       switch (true) {
