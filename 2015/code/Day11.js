@@ -1,5 +1,5 @@
-const fs = require('fs');
-const data = fs.readFileSync('./2015/input/Day11.txt', { encoding: 'utf8' });
+import { readFileSync } from 'fs';
+const data = readFileSync('./2015/input/Day11.txt', { encoding: 'utf8' });
 
 const passRule1 = (input) => {
   for (let i = 0; i < input.length - 2; i++) {
@@ -39,7 +39,6 @@ const passRules = (input, rules) => {
 
 const increasePassword = (input) => {
   const alpha = 'abcdefghijklmnopqrstuvwxyza';
-  let carry = 1;
   let current = input.split('').reverse();
 
   for (let i = 0; i < current.length; i++) {
