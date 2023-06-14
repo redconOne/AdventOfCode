@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-const data = readFileSync('./2015/input/Day6.txt', { encoding: 'utf8' })
-  .replace(/\r/g, '')
+import { readFileSync } from "fs";
+const data = readFileSync("./2015/input/Day6.txt", { encoding: "utf8" })
+  .replace(/\r/g, "")
   .trim();
 
 const toggle = (input, grid, modifier) => {
@@ -9,28 +9,30 @@ const toggle = (input, grid, modifier) => {
   const endX = input[2];
   const endY = input[3];
 
-  for (let y = startY; y <= endY; y++)
-    for (let x = startX; x <= endX; x++)
+  for (let y = startY; y <= endY; y++) {
+    for (let x = startX; x <= endX; x++) {
       switch (modifier) {
-        case 'on':
+        case "on":
           grid[y][x] = 1;
           break;
-        case 'off':
+        case "off":
           grid[y][x] = 0;
           break;
-        case 'toggle':
+        case "toggle":
           grid[y][x] = grid[y][x] ? 0 : 1;
           break;
-        case 'add1':
+        case "add1":
           grid[y][x]++;
           break;
-        case 'sub1':
+        case "sub1":
           grid[y][x] -= grid[y][x] ? 1 : 0;
           break;
         default:
-          console.log('Check toggle switch');
+          console.log("Check toggle switch");
           break;
       }
+    }
+  }
 };
 
 const createLights = () => {
@@ -46,13 +48,13 @@ const createLights = () => {
 const solve1 = (input) => {
   const lights = createLights();
 
-  for (const line of input.split('\n')) {
+  for (const line of input.split("\n")) {
     const turnRegex =
       /turn (?<modifier>\w+) (?<startX>\d+),(?<startY>\d+) through (?<endX>\d+),(?<endY>\d+)/;
     const toggleRegex =
       /(?<modifier>\w+) (?<startX>\d+),(?<startY>\d+) through (?<endX>\d+),(?<endY>\d+)/;
 
-    if (line.includes('turn')) {
+    if (line.includes("turn")) {
       const { modifier, startX, startY, endX, endY } =
         line.match(turnRegex).groups;
       toggle([+startX, +startY, +endX, +endY], lights, modifier);
@@ -72,27 +74,29 @@ const solve1 = (input) => {
 const solve2 = (input) => {
   const lights = createLights();
 
-  for (const line of input.split('\n')) {
+  for (const line of input.split("\n")) {
     let regex =
       /turn (?<modifier>\w+) (?<startX>\d+),(?<startY>\d+) through (?<endX>\d+),(?<endY>\d+)/;
 
-    if (line.includes('toggle'))
+    if (line.includes("toggle")) {
       regex =
         /(?<modifier>\w+) (?<startX>\d+),(?<startY>\d+) through (?<endX>\d+),(?<endY>\d+)/;
+    }
 
     const { modifier, startX, startY, endX, endY } = line.match(regex).groups;
 
     toggle(
       [+startX, +startY, +endX, +endY],
       lights,
-      modifier === 'off' ? 'sub1' : 'add1'
+      modifier === "off" ? "sub1" : "add1",
     );
-    if (line.includes('toggle'))
+    if (line.includes("toggle")) {
       toggle(
         [+startX, +startY, +endX, +endY],
         lights,
-        modifier === 'off' ? 'sub1' : 'add1'
+        modifier === "off" ? "sub1" : "add1",
       );
+    }
   }
 
   let total = 0;
